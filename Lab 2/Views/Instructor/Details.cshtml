@@ -1,0 +1,28 @@
+﻿@using Lab_2.ViewModel;
+@model InsDeptCrs
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+    <div class="container">
+        <h1>Instructor Details</h1>
+        <div class="card" style="width: 18rem;">
+            <img src="~/images/@Model.Ins_Image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Name: @Model.Ins_Name</h5>
+                <p class="card-text">Address: @Model.Ins_Address</p>
+                <p class="card-text">Salary: @Model.Ins_Salary</p>
+                <p class="card-text">Department: @Model.Ins_Department</p>
+                <p class="card-text">Course: @Model.Ins_Course</p>
+
+
+                <a href="/Instructor/index" class="btn btn-primary">See All Instrucors</a>
+            </div>
+        </div>
+    </div>
+
+
+

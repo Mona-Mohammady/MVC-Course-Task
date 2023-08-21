@@ -1,0 +1,51 @@
+﻿@model List<Course>
+@{
+
+  
+    ViewData["Title"] = "Index";
+
+   
+}
+<div class="container" style="background-color:lemonchiffon">
+    <h1 class="text-center tex-secondary">Courses</h1>
+    <div class="d-flex justify-content-start mb-3">
+        <a asp-action="New" asp-controller="course" class="btn btn-success">Add New Course</a>
+    </div>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Degree</th>
+                <th scope="col">MinDegree</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Degree</td>
+                    <td>@item.minDegree</td>
+                    <td class="action-buttons">
+                        <a asp-action="Details" asp-controller="Course" asp-route-id="@item.Id" class="btn btn-outline-success me-5 ms-5">More Details!</a>
+                        <a asp-action="Edit" asp-controller="course" asp-route-id="@item.Id" class="btn btn-outline-warning me-5">Edit</a>
+@*                        <a asp-action="Delete" asp-controller="Course" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+*@
+
+                     <p class="btn btn-outline-danger mt-2 text-decoration-none">
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                        new { onclick = "return confirm('Are sure wants to delete?');" })
+                     </p>
+</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+                   

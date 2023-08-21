@@ -1,0 +1,25 @@
+﻿@using Lab_2.ViewModel;
+@model List<TraineeCrsColorDegree>
+
+
+@{
+    ViewData["Title"] = "ShowTraineeResult";
+}
+
+<h2>Trainee Result </h2> 
+<table class="table table-border">
+    <tr>
+        <th>Name</th>
+        <th>Degree</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="color:@item.color">
+            <th>@item.crs_Name</th>
+            <th>@item.degree</th>
+        </tr>
+    }
+
+
+
+</table>

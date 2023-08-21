@@ -1,0 +1,17 @@
+﻿@using Lab_2.ViewModel;
+@model CourseResultV
+
+@{
+    var degree = Model.CourseResult.Degree;
+    var resultColor = degree < Model.CourseResult.Course.minDegree ? "red" : "green";
+}
+<div class="container">
+    <h2>Course Result</h2>
+    <div style="color: @resultColor; width: 18rem;" class="border">
+        <p>Course Name: @Model.CourseResult.Course.Name</p>
+        <p>Student Name: @Model.CourseResult.Trainee.Name</p>
+        <p>Result: <span>@degree</span></p>
+    </div>
+</div>
+
+ 

@@ -1,0 +1,77 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "Edit";
+    SelectList deptname = new SelectList(ViewBag.Depts, "Id", "Name");
+    SelectList coursename = new SelectList(ViewBag.Crses, "Id", "Name");
+}
+
+<h1>Edit</h1>
+
+<form method="post" enctype="multipart/form-data">
+
+    <div>
+        <label>Name :</label>
+        <input type="text" name="Name" id="Name" value="@Model.Name" class="form-control" />
+    </div>
+
+    <div>
+        <label>Salary :</label>
+        <input type="number" name="Salary" id="Salary" value="@Model.Salary" class="form-control" />
+    </div>
+
+
+    <div>
+        <label>Address :</label>
+        <input type="text" name="Address" id="Address" value="@Model.Address" class="form-control" />
+    </div>
+
+
+    <div>
+        <label>Image</label>
+        <input type="file" name="Image" id="Image" value="@Model.Image" class="form-control" />
+    </div>
+
+
+   
+
+
+    <div class="mb-3">
+        
+        <label>Department Name</label>
+        <select asp-for="dept_id" class="form-control" asp-items="deptname" onchange="GetDeptData()">
+            <option value="0">--------Select Department---------</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Course Name</label>
+        <select asp-for="crs_id" asp-items="coursename" class="form-control">
+        </select>
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-primary mt-3" />
+</form>
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script>
+        function GetDeptData() {
+            var deptId = document.getElementById("dept_id").value;
+            console.log(deptId)
+            $.ajax({
+                url: "/Instructor/GetCourseByDept?deptid=" + deptId,
+                success: function (result) {
+                    console.log(result);
+                    document.getElementById("crs_id").innerHTML = "";
+                    for (let i of result) {
+                        document.getElementById("crs_id").innerHTML +=
+                            "<option value='" + i.id + "'>" + i.name + "</option>"
+
+                    }
+                }
+            });
+
+        }
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿
+@model List<Instructor>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center text-secondary">All Instructors</h1>
+
+<form action="/Instructor/search" class="text-center">
+    <input type="text" name="Name" id="Name" />
+    <button type="submit" class="btn btn-primary">Search</button>   
+</form>
+
+
+<a href="/Instructor/New" class="btn btn-success">Add New</a>
+
+
+
+
+
+<table class="table table-hover  table-border">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Address</th>
+            <th scope="col">Image</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>@item.Salary</td>
+                <td>@item.Address</td>
+                <td><img src="~/images/@item.Image" class="img-fluid" width="100" height="100" /></td>
+                <td><a href="/instructor/details/@item.Id" class="text-decoration-none bg-success text-black p-2 mt-5">More Details</a></td>
+                <td><a href="/instructor/edit/@item.Id" class="text-decoration-none bg-warning text-black p-2 mt-5"> Edit </a> </td>
+                <td><a href="/instructor/delete/@item.Id" class="text-decoration-none bg-danger text-black p-2 mt-5"> Delete </a> </td>
+
+        
+        </tr>
+        }
+    </tbody>
+</table>

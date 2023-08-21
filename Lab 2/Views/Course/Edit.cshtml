@@ -1,0 +1,59 @@
+﻿@model Course
+@{
+    
+    ViewData["Title"] = "Edit";
+    //SelectList deptItems = new SelectList(ViewBag.DeptList, "Id", "Name");
+
+}
+<div class="container" style="background-color:burlywood">
+    <h1>Edit Courses</h1>
+    <form method="post" asp-action="Edit" asp-controller="Course">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+        <div>
+            <label asp-for="Degree"></label>
+            <input asp-for="Degree" class="form-control" />
+            <span asp-validation-for="Degree" class="text-danger"></span>
+
+        </div>
+        <div>
+            <label asp-for="minDegree"></label>
+            <input asp-for="minDegree" class="form-control" />
+            <span asp-validation-for="minDegree" class="text-danger"></span>
+
+        </div>
+
+        @*<div>
+            <label asp-for="dept_id">DeptName</label>
+
+            <select asp-for="dept_id" class="form-control" asp-items="deptItems"></select>
+            <span asp-validation-for="dept_id" class="text-danger"></span>
+
+        </div>*@
+
+
+         <div>
+            <label for="dept_id" class="form-label p-2">DeptName</label>
+
+        <select id="dept_Id" class="form-control w-50 " name="Dept_Id">
+            @foreach (var dept in ViewBag.Depts)
+            {
+
+                if (Model.dept_id == dept.Id)
+                {
+                    <option value="@dept.Id" selected>@dept.Name</option>
+
+                }
+                <option value="@dept.Id">@dept.Name</option>
+            }
+        </select>
+        <span asp-validation-for="dept_id" class="text-danger ps-4 fs-6"></span>
+    </div>
+
+        <input type="submit" value="Update" class="btn btn-outline-primary mt-3" />
+    </form>
+</div>

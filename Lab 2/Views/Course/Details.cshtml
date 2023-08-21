@@ -1,0 +1,30 @@
+﻿@using Lab_2.ViewModel
+@model crsDept 
+@{
+   
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-secondary"> Details of @Model.Crsname Course </h1>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">Name: @Model.Crsname</h5>
+                <p class="card-text">Degree: @Model.Crsdergree</p>
+                <p class="card-text">MinDegree: @Model.CrsMindergree</p>
+                <p class="card-text">Department: @Model.CrsDept</p>
+                <a asp-action="index" asp-controller="course" class="btn btn-primary">Go to All Courses</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
